@@ -10,7 +10,7 @@ export async function BuildLog() {
   return (
     <section id="build-log" data-chapter="about" className="section" aria-labelledby="build-log-title">
       <div className="page sheet">
-        <SectionMarker n="05b" label="Archive" />
+        <SectionMarker n="06b" label="Archive" />
         <div className="body">
           <div className={styles.head}>
             <h2 id="build-log-title" className="h-section">

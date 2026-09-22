@@ -2,6 +2,7 @@ import { ViewTransition } from "react";
 import { About } from "@/components/about/About";
 import { ArchitectureSection } from "@/components/architecture/ArchitectureSection";
 import { Contact } from "@/components/contact/Contact";
+import { Experience } from "@/components/experience/Experience";
 import { BuildLog } from "@/components/github/BuildLog";
 import { Hero } from "@/components/hero/Hero";
 import { NotesSection } from "@/components/notes/NotesSection";
@@ -22,6 +23,7 @@ export default function Home() {
         <Hero />
         <SystemsSnapshot />
         <WorkSection />
+        <Experience />
         <ArchitectureSection />
         <NotesSection />
         <About />

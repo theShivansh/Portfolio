@@ -18,7 +18,7 @@ export function Hero() {
           <p className={`meta ${styles.status}`}>
             <span className="live-dot" aria-hidden="true" /> Available / building
           </p>
-          <p className={`meta field-only ${styles.extraMeta}`}>7 systems · 7 deployed · 2025 → 2026</p>
+          <p className={`meta field-only ${styles.extraMeta}`}>2 roles · 7 systems · 7 deployed · 2025 → 2026</p>
         </div>
 
         <div className={styles.switchSlot}>

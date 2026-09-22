@@ -10,7 +10,7 @@ export function NotesSection() {
     <>
       <section id="notes" data-chapter="notes" className="section" aria-labelledby="notes-title">
         <div className="page sheet">
-          <SectionMarker n="04" label="Notes" note="written after the fact" />
+          <SectionMarker n="05" label="Notes" note="written after the fact" />
           <div className="body">
             <h2 id="notes-title" className="h-section">
               Lab notes
@@ -28,7 +28,7 @@ export function NotesSection() {
 
       <section id="evidence" data-chapter="notes" className="section" aria-labelledby="evidence-title">
         <div className="page sheet">
-          <SectionMarker n="04b" label="Evidence" />
+          <SectionMarker n="05b" label="Evidence" />
           <div className="body">
             <h2 id="evidence-title" className="h-section">
               Show me the engineering

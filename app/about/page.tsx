@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { About } from "@/components/about/About";
 import { Principles } from "@/components/architecture/Principles";
 import { Contact } from "@/components/contact/Contact";
+import { Experience } from "@/components/experience/Experience";
 import styles from "../subpage.module.css";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Shivansh Shukla: AI engineer and full-stack builder. What I build, what I care about, and how I think.",
+  description: "Shivansh Shukla: AI engineer and full-stack builder. Experience, what I build, what I care about, and how I think.",
   alternates: { canonical: "/about" },
 };
 
@@ -14,6 +15,7 @@ export default function AboutPage() {
   return (
     <main id="main" tabIndex={-1}>
       <About as="h1" />
+      <Experience />
       <section className="section" aria-labelledby="principles-title">
         <div className="page sheet">
           <div className="margin" />

@@ -6,7 +6,7 @@ export function Contact() {
   return (
     <section id="contact" data-chapter="contact" className="section" aria-labelledby="contact-title">
       <div className="page sheet">
-        <SectionMarker n="06" label="Contact" />
+        <SectionMarker n="07" label="Contact" />
         <div className="body">
           <h2 id="contact-title" className={styles.title}>
             Let&apos;s build something useful.

@@ -237,7 +237,8 @@ export const labNotes: LabNote[] = [
 ];
 
 /**
- * Timeline entries come from GitHub account and repository creation dates.
+ * Timeline entries come from GitHub account and repository creation dates,
+ * plus the two roles in lib/experience.ts.
  * Years with nothing verifiable are left out rather than filled in.
  */
 export const timeline = [
@@ -251,6 +252,7 @@ export const timeline = [
     phase: "Building",
     entries: [
       "AIXPLORER, a directory of AI tools, a glossary and a prompt lab (March).",
+      "AI Developer at Technology Mindz, Jaipur: LangChain and LangGraph agents, hybrid retrieval (May to July).",
       "MoneyMentor AI, the first multi-agent system: parallel specialists and finance engines (July).",
     ],
   },
@@ -260,6 +262,7 @@ export const timeline = [
     entries: [
       "ACHP, an adversarial claim-verification council (April).",
       "ZenStep and VitoSynth, vision-driven intervention and simulation prototypes (May, June).",
+      "AWS Cloud and Linux intern at GRRAS Solutions, Jaipur, graduated with distinction (May to July).",
       "StyleLab, grounded wardrobe AI with 709 backend tests (September).",
       "CROWN-X, built solo for AWS First Commit 2026 (September).",
     ],

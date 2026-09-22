@@ -1,7 +1,7 @@
 import { timeline } from "@/lib/content";
 import styles from "./about.module.css";
 
-/** Only verifiable entries: account and repository dates from GitHub. */
+/** Only verifiable entries: roles, and account and repository dates from GitHub. */
 export function Timeline() {
   return (
     <section className={styles.timeline} aria-labelledby="timeline-title">

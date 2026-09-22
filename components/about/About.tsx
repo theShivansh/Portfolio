@@ -13,7 +13,7 @@ export function About({ as: H = "h2" }: { as?: "h1" | "h2" }) {
   return (
     <section id="about" data-chapter="about" className="section" aria-labelledby="about-title">
       <div className="page sheet">
-        <SectionMarker n="05" label="About" />
+        <SectionMarker n="06" label="About" />
         <div className="body">
           <H id="about-title" className="h-section">
             Who is behind the systems?
@@ -41,8 +41,9 @@ export function About({ as: H = "h2" }: { as?: "h1" | "h2" }) {
           </div>
 
           <p className={styles.bio}>
-            I work end to end: Python services and evaluation harnesses, TypeScript interfaces, and the deployment in
-            between. Most of what I build is about the space around a model: what it can see, what it is allowed to
+            I work end to end: Python services and evaluation harnesses, TypeScript interfaces, and the cloud underneath.
+            That range comes from two roles, agent and retrieval work at Technology Mindz and AWS infrastructure at GRRAS
+            Solutions, and from the systems on this page. Most of what I build is about the space around a model: what it can see, what it is allowed to
             decide, how its output is checked, and how a person corrects it.
           </p>
 

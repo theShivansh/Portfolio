@@ -34,8 +34,9 @@ export type Chapter = { id: string; n: string; label: string };
 export const chapters: Chapter[] = [
   { id: "systems", n: "01", label: "Systems" },
   { id: "work", n: "02", label: "Work" },
-  { id: "architecture", n: "03", label: "Architecture" },
-  { id: "notes", n: "04", label: "Notes" },
-  { id: "about", n: "05", label: "About" },
-  { id: "contact", n: "06", label: "Contact" },
+  { id: "experience", n: "03", label: "Experience" },
+  { id: "architecture", n: "04", label: "Architecture" },
+  { id: "notes", n: "05", label: "Notes" },
+  { id: "about", n: "06", label: "About" },
+  { id: "contact", n: "07", label: "Contact" },
 ];
