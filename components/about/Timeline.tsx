@@ -21,7 +21,6 @@ export function Timeline() {
           </li>
         ))}
       </ol>
-      <p className={styles.timelineNote}>2024 is left blank: nothing from that year is public.</p>
     </section>
   );
 }
