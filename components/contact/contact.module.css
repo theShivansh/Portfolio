@@ -95,7 +95,7 @@
 .fbottom {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: var(--s-4);
   margin-top: var(--s-8);

@@ -39,7 +39,6 @@ export function Footer() {
         <p className={styles.fnote}>More systems in progress.</p>
       </div>
       <div className={`page ${styles.fbottom}`}>
-        <span>Built with Next.js, React and CSS scroll timelines. No cookies, no third-party scripts.</span>
         <Preferences />
       </div>
     </footer>
