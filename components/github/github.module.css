@@ -1,0 +1,135 @@
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.scroller {
+  margin-top: var(--s-6);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.table thead th {
+  padding: var(--s-2) var(--s-3) var(--s-2) 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--muted-strong);
+}
+
+.table tbody th,
+.table td {
+  padding: var(--s-4) var(--s-3) var(--s-4) 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+
+.table tbody tr {
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+
+.table tbody tr:hover {
+  background: var(--paper-2);
+}
+
+.repo {
+  font-family: var(--ff-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pushed {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--muted-strong);
+}
+
+.desc {
+  color: var(--graphite);
+  min-width: 16rem;
+}
+
+.stack {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  color: var(--graphite);
+}
+
+.status {
+  display: inline-block;
+  font-family: var(--ff-mono);
+  font-size: 0.625rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--ink);
+  white-space: nowrap;
+}
+
+.status[data-status="Live"] {
+  background: var(--accent);
+}
+
+.status[data-status="Archive"] {
+  border-color: var(--line-strong);
+  color: var(--muted-strong);
+}
+
+.link a {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+  padding-block: var(--s-1);
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+/* Small screens: each row becomes a stacked record, no sideways scroll. */
+@media (max-width: 767px) {
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block;
+  }
+  .table tbody tr {
+    padding: var(--s-4) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .table tbody th,
+  .table td {
+    padding: var(--s-1) 0;
+    border: 0;
+  }
+  .desc {
+    min-width: 0;
+  }
+}

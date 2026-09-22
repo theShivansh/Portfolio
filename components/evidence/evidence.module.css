@@ -1,0 +1,168 @@
+.table {
+  margin-top: var(--s-6);
+  border-top: 1px solid var(--ink);
+}
+
+.headRow,
+.summary {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.8fr) minmax(0, 1.4fr) 1.5rem;
+  gap: var(--s-4);
+  align-items: baseline;
+}
+
+@media (min-width: 900px) {
+  .headRow,
+  .summary {
+    grid-template-columns: minmax(10rem, 0.8fr) minmax(0, 1.3fr) minmax(0, 1fr) 1.5rem;
+  }
+}
+
+.headRow {
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.headRow span:nth-child(3) {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .headRow span:nth-child(3) {
+    display: block;
+  }
+}
+
+.row {
+  border-bottom: 1px solid var(--line);
+}
+
+.summary {
+  list-style: none;
+  min-height: 3.5rem;
+  padding: var(--s-4) 0;
+  cursor: inherit;
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:hover {
+  background: var(--paper-2);
+}
+
+.area {
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.what {
+  font-size: 1.15rem;
+  font-weight: 560;
+  line-height: 1.25;
+}
+
+.whereInline {
+  display: none;
+  font-size: var(--fs-small);
+  color: var(--graphite);
+}
+
+@media (min-width: 900px) {
+  .whereInline {
+    display: block;
+  }
+}
+
+.toggle {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  align-self: center;
+}
+
+.toggle::before,
+.toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform var(--dur-small) var(--ease-out);
+}
+
+.toggle::after {
+  transform: rotate(90deg);
+}
+
+.row[open] .toggle::after {
+  transform: rotate(0deg);
+}
+
+.row[open] .summary {
+  background: var(--paper-2);
+}
+
+.row[open] .area {
+  background: var(--accent);
+  justify-self: start;
+  padding: 0 0.3rem;
+}
+
+.detail {
+  display: grid;
+  gap: var(--s-4);
+  padding: var(--s-2) 0 var(--s-6);
+  font-size: var(--fs-small);
+  color: var(--graphite);
+}
+
+@media (min-width: 900px) {
+  .detail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-6);
+  }
+}
+
+.detail > div {
+  display: grid;
+  align-content: start;
+  gap: var(--s-2);
+}
+
+.where {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--s-1);
+}
+
+/* Smooth open where the browser can animate to auto height. */
+@supports (interpolate-size: allow-keywords) {
+  .row {
+    interpolate-size: allow-keywords;
+  }
+  .row::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height var(--dur-medium) var(--ease-out),
+      content-visibility var(--dur-medium) allow-discrete;
+  }
+  .row[open]::details-content {
+    height: auto;
+  }
+}

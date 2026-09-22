@@ -1,0 +1,269 @@
+.skip {
+  position: fixed;
+  top: var(--s-2);
+  left: var(--s-2);
+  z-index: var(--z-skip);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.skip a {
+  position: absolute;
+  left: -9999px;
+  padding: var(--s-3) var(--s-4);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+
+.skip a:focus {
+  position: static;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  min-height: 3.5rem;
+}
+
+.brand {
+  font-weight: 700;
+  font-variation-settings: "wdth" 85;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.desktopNav {
+  display: none;
+  margin-inline: auto;
+}
+
+.chapters {
+  display: flex;
+  gap: var(--s-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  min-height: 2.25rem;
+  padding: 0 0.45rem;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--graphite);
+  border-radius: var(--r-1);
+  transition:
+    color var(--dur-micro) var(--ease-out),
+    background-color var(--dur-micro) var(--ease-out);
+}
+
+.chapter:hover {
+  color: var(--ink);
+}
+
+.chapter[aria-current="location"] {
+  color: var(--ink);
+  background: var(--accent);
+}
+
+.chapterN {
+  font-family: var(--ff-mono);
+  color: var(--muted-strong);
+}
+
+.chapter[aria-current="location"] .chapterN {
+  color: var(--ink);
+}
+
+.right {
+  display: none;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.prefs {
+  display: flex;
+  gap: 1px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  overflow: hidden;
+}
+
+.pref {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  min-height: 2.25rem;
+  padding: 0 var(--s-2);
+  background: transparent;
+  border: 0;
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  align-items: center;
+}
+
+.pref + .pref {
+  border-left: 1px solid var(--line-strong);
+}
+
+.pref:hover {
+  background: var(--paper-2);
+}
+
+.prefKey {
+  color: var(--muted-strong);
+}
+
+.prefVal {
+  min-width: 4.4em;
+  text-align: left;
+}
+
+/* Page scroll progress: native scroll timeline, hidden where unsupported. */
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--ink);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .progress {
+    display: block;
+    animation: grow linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Mobile */
+.mobileNav {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-left: auto;
+}
+
+.readout {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.menuButton {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 var(--s-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  background: transparent;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: var(--s-4) var(--gutter) var(--s-6);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-sheet);
+}
+
+.menu .chapters {
+  flex-direction: column;
+  gap: 0;
+}
+
+.menu .chapter {
+  min-height: 48px;
+  width: 100%;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+  .right {
+    display: flex;
+    margin-left: auto;
+  }
+  .mobileNav {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1180px) {
+  .desktopNav {
+    display: block;
+  }
+  .mobileNav {
+    display: none;
+  }
+  .right {
+    margin-left: 0;
+  }
+}
+
+/* The status needs room; below 1500px it lives in the hero instead. */
+@media (max-width: 1499px) {
+  .status {
+    display: none;
+  }
+}

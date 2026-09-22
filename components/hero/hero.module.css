@@ -1,0 +1,419 @@
+/* Mobile keeps the hero tight; desktop gets the full sheet. */
+.hero {
+  position: relative;
+  padding-block: var(--s-5) var(--s-4);
+  min-height: calc(100dvh - 3.5rem);
+  display: flex;
+  align-items: stretch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "meta switch"
+    "copy copy"
+    "figure figure"
+    "cue cue";
+  column-gap: var(--s-6);
+  row-gap: var(--s-6);
+  align-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-block: var(--s-6) var(--s-8);
+  }
+  .grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas:
+      "meta switch"
+      "copy figure"
+      "cue figure";
+    row-gap: var(--s-5);
+  }
+}
+
+.metaBlock {
+  grid-area: meta;
+  display: grid;
+  gap: 0;
+}
+
+.status {
+  margin-top: var(--s-2);
+  color: var(--ink);
+}
+
+@media (min-width: 1500px) {
+  .status {
+    display: none;
+  }
+}
+
+.extraMeta {
+  margin-top: var(--s-2);
+  color: var(--ink);
+}
+
+.switchSlot {
+  grid-area: switch;
+  justify-self: end;
+  align-self: start;
+}
+
+.copy {
+  grid-area: copy;
+  align-self: center;
+}
+
+.name {
+  display: grid;
+  font-size: clamp(4.25rem, 19vw, 11.5rem);
+  font-weight: 720;
+  font-variation-settings: "wdth" 76, "opsz" 96;
+  letter-spacing: var(--track-display);
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.role {
+  margin-top: var(--s-4);
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+
+.statement {
+  margin-top: var(--s-5);
+  max-width: 22ch;
+  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+  font-weight: 560;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 48;
+}
+
+.why {
+  margin-top: var(--s-3);
+  max-width: 46ch;
+  color: var(--graphite);
+}
+
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.strip li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.strip li > span {
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  background: var(--paper);
+}
+
+.strip svg {
+  width: 1.9rem;
+  height: 0.8rem;
+  color: var(--graphite);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+
+.figure {
+  grid-area: figure;
+  align-self: center;
+  justify-self: center;
+  width: min(100%, 30rem);
+}
+
+.scrollCue {
+  grid-area: cue;
+  align-self: end;
+  justify-self: start;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--graphite);
+  padding-block: var(--s-2);
+}
+
+.scrollCue:hover {
+  color: var(--ink);
+}
+
+/* ─── Field mode switch ─────────────────────────────── */
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 44px;
+  padding: 0 var(--s-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  background: var(--paper);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.switch:hover {
+  background: var(--paper-2);
+}
+
+.switchLabel::before {
+  content: "[ ";
+  color: var(--muted-strong);
+}
+
+.switchLabel::after {
+  content: " ]";
+  color: var(--muted-strong);
+}
+
+.track {
+  position: relative;
+  width: 2.1rem;
+  height: 1.1rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--paper-2);
+  transition: background-color var(--dur-small) var(--ease-out);
+}
+
+.thumb {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: calc(1.1rem - 4px);
+  height: calc(1.1rem - 4px);
+  border-radius: 50%;
+  background: var(--ink);
+  transition: transform var(--dur-small) var(--ease-out);
+}
+
+.switch[aria-checked="true"] .track {
+  background: var(--accent);
+}
+
+.switch[aria-checked="true"] .thumb {
+  transform: translateX(0.98rem);
+}
+
+.switchState {
+  min-width: 1.8em;
+  text-align: left;
+}
+
+/* ─── Sketch → system diagram ───────────────────────── */
+
+.sketch {
+  width: 100%;
+  height: auto;
+  max-height: 72dvh;
+  overflow: visible;
+}
+
+.sketchLayer {
+  color: var(--pencil);
+}
+
+.sketchLabels text {
+  font-family: var(--ff-hand);
+  font-size: 24px;
+  fill: var(--pencil);
+}
+
+/* Final state: the sketch recedes under the system. */
+.sketchModel,
+.sketchArrow {
+  opacity: 0.2;
+}
+
+.system {
+  color: var(--ink);
+}
+
+.frame {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.frameLabel {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  fill: var(--graphite);
+}
+
+.nodeBox {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.gate {
+  fill: var(--accent);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.ioBox {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.node text {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  fill: var(--ink);
+}
+
+.edges path {
+  stroke-dasharray: 1;
+}
+
+.notes {
+  color: var(--pencil);
+}
+
+.note {
+  font-family: var(--ff-hand);
+  font-size: 19px;
+  fill: var(--pencil);
+}
+
+@keyframes sys-in {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes line-in {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes sketch-hold {
+  from {
+    opacity: 1;
+  }
+}
+
+/* Scroll-driven: the morph tracks the hero leaving the viewport. */
+@supports (animation-timeline: view()) {
+  .hero {
+    view-timeline: --hero block;
+  }
+
+  .frame,
+  .frameLabel,
+  .ioBox,
+  .node,
+  .notes,
+  .edges path,
+  .sketchModel,
+  .sketchArrow {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: --hero;
+  }
+
+  .sketchModel,
+  .sketchArrow {
+    animation-name: sketch-hold;
+    animation-range: exit 2% exit 22%;
+  }
+
+  .frame,
+  .frameLabel {
+    animation-name: sys-in;
+    animation-range: exit 0% exit 14%;
+  }
+
+  .ioBox {
+    animation-name: sys-in;
+    animation-range: exit 4% exit 16%;
+  }
+
+  .node[data-group="1"] {
+    animation-name: sys-in;
+    animation-range: exit 6% exit 20%;
+  }
+
+  .node[data-group="2"] {
+    animation-name: sys-in;
+    animation-range: exit 12% exit 26%;
+  }
+
+  .node[data-group="3"],
+  .notes {
+    animation-name: sys-in;
+    animation-range: exit 18% exit 32%;
+  }
+
+  .edges path {
+    animation-name: line-in;
+    animation-range: exit 14% exit 40%;
+  }
+}
+
+/* No scroll timelines: play the morph once, shortly after load. */
+@supports not (animation-timeline: view()) {
+  .sketchModel,
+  .sketchArrow {
+    animation: sketch-hold var(--dur-large) var(--ease-out) 1400ms both;
+  }
+  .frame,
+  .frameLabel,
+  .ioBox {
+    animation: sys-in var(--dur-medium) var(--ease-out) 1300ms both;
+  }
+  .node[data-group="1"] {
+    animation: sys-in var(--dur-medium) var(--ease-out) 1500ms both;
+  }
+  .node[data-group="2"] {
+    animation: sys-in var(--dur-medium) var(--ease-out) 1650ms both;
+  }
+  .node[data-group="3"],
+  .notes {
+    animation: sys-in var(--dur-medium) var(--ease-out) 1800ms both;
+  }
+  .edges path {
+    animation: line-in var(--dur-large) var(--ease-draw) 1700ms both;
+  }
+}

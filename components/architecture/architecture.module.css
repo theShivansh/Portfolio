@@ -1,0 +1,230 @@
+.intro {
+  margin-top: var(--s-4);
+  max-width: 42ch;
+  color: var(--graphite);
+}
+
+.story {
+  margin-top: var(--s-7);
+}
+
+/* ─── Note → system stage ───────────────────────────── */
+
+.stage {
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 11rem);
+  overflow: visible;
+}
+
+.sketch {
+  color: var(--pencil);
+}
+
+.sketch path,
+.annot path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.sketch text,
+.annot text {
+  font-family: var(--ff-hand);
+  font-size: 22px;
+  fill: var(--pencil);
+}
+
+.annot {
+  color: var(--pencil);
+}
+
+.annot text {
+  font-size: 18px;
+}
+
+.structure text,
+.live text,
+.system text {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  fill: var(--ink);
+}
+
+.box {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.gate {
+  fill: var(--accent);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.edge {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.loop {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.store {
+  fill: var(--paper-2);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.edgeLabel {
+  fill: var(--graphite) !important;
+}
+
+.pill {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.pillOn {
+  fill: var(--accent);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.console {
+  fill: var(--black);
+}
+
+.consoleText {
+  fill: var(--white) !important;
+}
+
+/* ─── How I think ───────────────────────────────────── */
+
+.thinkHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--s-2) var(--s-6);
+  margin-top: var(--s-9);
+}
+
+.thinkTitle {
+  font-size: var(--fs-h2);
+  font-variation-settings: "wdth" 88;
+}
+
+.thinkNote {
+  transform: rotate(-2deg);
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 0;
+  margin: var(--s-6) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--line);
+}
+
+.principle {
+  display: grid;
+  align-content: start;
+  gap: var(--s-3);
+  padding: var(--s-5) var(--s-4) var(--s-6);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background-color var(--dur-small) var(--ease-out);
+}
+
+.principle:hover,
+.principle:focus-visible {
+  background: color-mix(in srgb, var(--paper) 50%, white);
+}
+
+.pn {
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+}
+
+.ptitle {
+  font-size: 1.35rem;
+  font-variation-settings: "wdth" 86;
+  line-height: 1.1;
+}
+
+.mini {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  padding: var(--s-2) 0;
+}
+
+.miniBox {
+  font-family: var(--ff-mono);
+  font-size: 0.625rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--ink);
+}
+
+.miniTo {
+  background: var(--accent);
+}
+
+.miniArrow {
+  width: 2.4rem;
+  height: 1rem;
+  color: var(--pencil);
+}
+
+.miniNot {
+  position: relative;
+  font-family: var(--ff-hand);
+  font-size: 1.15rem;
+  color: var(--muted-strong);
+  padding: 0 0.2rem;
+}
+
+.miniNot svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--pencil);
+}
+
+.miniNot path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.pbody {
+  font-size: var(--fs-small);
+  color: var(--graphite);
+}
+
+.pwhere {
+  margin-top: auto;
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}

@@ -1,0 +1,108 @@
+/*
+ * FIELD/INTELLIGENCE design tokens.
+ * One source for color, space, type, radius, shadow, motion and layering.
+ * Breakpoints are listed for reference; CSS can't read custom properties
+ * inside @media, so media queries use the same literal values:
+ *   sm 480px · md 768px · lg 1024px · xl 1280px
+ */
+:root {
+  /* Paper and ink */
+  --paper: #f3f1e9;
+  --paper-2: #e9e6dc;
+  --paper-3: #dfdbcf;
+  --ink: #10110f;
+  --graphite: #4b4d47;
+  --muted: #7b7c74;
+  /* Small text on paper needs more contrast than --muted gives (4.9:1). */
+  --muted-strong: #62635c;
+  --line: rgba(16, 17, 15, 0.14);
+  --line-strong: rgba(16, 17, 15, 0.34);
+
+  /* Signal: rare. Active, verified, live, selected. Never used for text. */
+  --accent: #c8ff00;
+  --accent-soft: rgba(200, 255, 0, 0.16);
+  --accent-ink: #3d4d00; /* legible "lime-family" text on paper */
+
+  /* System surfaces (one localized immersion) */
+  --black: #080908;
+  --black-2: #11120f;
+  --black-3: #1b1c18;
+  --white: #f5f4ed;
+  --line-dark: rgba(245, 244, 237, 0.14);
+
+  /* Annotation ink */
+  --pencil: #4b4d47;
+
+  /* Space: 4px base */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 8rem;
+  --section: clamp(5rem, 11vw, 9.5rem);
+
+  /* Layout */
+  --max: 1320px;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --margin-col: 0px;
+  --measure: 62ch;
+
+  /* Radii: paper has almost none */
+  --r-0: 0;
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-pill: 999px;
+
+  /* Shadows: a sheet lifted off the desk, not a floating card */
+  --shadow-sheet: 0 1px 0 rgba(16, 17, 15, 0.05), 0 18px 40px -28px rgba(16, 17, 15, 0.45);
+  --shadow-press: 0 1px 0 rgba(16, 17, 15, 0.12);
+
+  /* Type */
+  --ff-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --ff-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ff-hand: var(--font-caveat), "Segoe Print", "Bradley Hand", cursive;
+
+  --fs-display: clamp(3.6rem, 12.5vw, 11rem);
+  --fs-h1: clamp(2.6rem, 6vw, 5rem);
+  --fs-h2: clamp(2rem, 4vw, 3.4rem);
+  --fs-h3: clamp(1.35rem, 2vw, 1.7rem);
+  --fs-lead: clamp(1.2rem, 1.8vw, 1.5rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9375rem;
+  --fs-meta: 0.75rem;
+  --fs-hand: clamp(1.35rem, 2vw, 1.7rem);
+
+  --lh-tight: 0.9;
+  --lh-head: 1.05;
+  --lh-body: 1.55;
+  --track-display: -0.045em;
+  --track-head: -0.025em;
+  --track-meta: 0.06em;
+
+  /* Motion */
+  --dur-micro: 150ms;
+  --dur-small: 240ms;
+  --dur-medium: 400ms;
+  --dur-large: 700ms;
+  --ease-out: cubic-bezier(0.22, 0.8, 0.26, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-draw: cubic-bezier(0.45, 0.05, 0.25, 1);
+
+  /* Layers */
+  --z-base: 1;
+  --z-sticky: 20;
+  --z-nav: 50;
+  --z-overlay: 60;
+  --z-skip: 100;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --margin-col: 7.5rem;
+  }
+}

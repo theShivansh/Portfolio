@@ -1,0 +1,178 @@
+.intro {
+  margin-top: var(--s-4);
+  max-width: 40ch;
+  color: var(--graphite);
+}
+
+.index {
+  display: grid;
+  margin: var(--s-7) 0 var(--s-8);
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+
+.indexLink {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  grid-template-areas:
+    "n title"
+    "n cat"
+    "n thesis";
+  gap: 0 var(--s-3);
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+
+@media (min-width: 900px) {
+  .indexLink {
+    grid-template-columns: 3rem minmax(10rem, 1fr) minmax(10rem, 0.9fr) minmax(0, 1.6fr);
+    grid-template-areas: "n title cat thesis";
+    align-items: baseline;
+  }
+}
+
+.indexLink:hover {
+  background: var(--paper-2);
+}
+
+.indexN {
+  grid-area: n;
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+}
+
+.indexTitle {
+  grid-area: title;
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-variation-settings: "wdth" 80;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.indexCat {
+  grid-area: cat;
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.indexThesis {
+  grid-area: thesis;
+  color: var(--graphite);
+  font-size: var(--fs-small);
+}
+
+.secondaryHead {
+  margin-top: var(--s-9);
+  padding-top: var(--s-5);
+  border-top: 3px double var(--ink);
+}
+
+.groupTitle {
+  font-size: var(--fs-h3);
+}
+
+.groupNote {
+  color: var(--graphite);
+  margin-top: var(--s-1);
+}
+
+.archive {
+  display: grid;
+  gap: var(--s-3);
+  margin-top: var(--s-8);
+}
+
+/* An index card: ruled, slightly lifted, not a SaaS tile. */
+.card {
+  display: grid;
+  gap: var(--s-5);
+  padding: var(--s-5);
+  border: 1px solid var(--line-strong);
+  border-top: 3px solid var(--ink);
+  background-color: color-mix(in srgb, var(--paper) 60%, white);
+  background-image: repeating-linear-gradient(transparent 0 27px, var(--line) 27px 28px);
+  box-shadow: var(--shadow-sheet);
+}
+
+@media (min-width: 900px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+  }
+}
+
+.cardText {
+  display: grid;
+  gap: var(--s-2);
+  align-content: start;
+}
+
+.cardN {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  color: var(--muted-strong);
+}
+
+.cardTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variation-settings: "wdth" 80;
+  text-transform: uppercase;
+}
+
+.cardIndex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: var(--track-meta);
+}
+
+.cardIndex li {
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--ink);
+}
+
+.cardArc {
+  font-family: var(--ff-hand);
+  font-size: 1.6rem;
+  color: var(--pencil);
+  line-height: 1.1;
+}
+
+.cardLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  font-size: var(--fs-small);
+}
+
+.cardShot {
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  border-radius: var(--r-1);
+  filter: grayscale(0.6);
+  transition: filter var(--dur-medium) var(--ease-out);
+}
+
+.card:hover .cardShot {
+  filter: none;
+}
+
+.cardShot img {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,70 @@
+.marker {
+  display: grid;
+  align-content: start;
+  gap: var(--s-1);
+  margin-bottom: var(--s-6);
+}
+
+.markerN {
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.markerNote {
+  margin-top: var(--s-3);
+  font-size: 1.25rem;
+  max-width: 7rem;
+  transform: rotate(-3deg);
+  transform-origin: left top;
+}
+
+@media (min-width: 1024px) {
+  .marker {
+    position: sticky;
+    top: 5.5rem;
+    margin-bottom: 0;
+  }
+}
+
+.annotation {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--s-1);
+  font-size: var(--fs-hand);
+  max-width: 18rem;
+}
+
+.annotation[data-arrow="right"] {
+  flex-direction: row-reverse;
+}
+
+.annotation[data-arrow="down"] {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+.annotation[data-arrow="up"] {
+  flex-direction: column;
+}
+
+.arrow {
+  flex: none;
+  width: 3rem;
+  height: auto;
+  margin-top: 0.3em;
+}
+
+.annotation[data-arrow="down"] .arrow,
+.annotation[data-arrow="up"] .arrow {
+  width: 1.8rem;
+  margin-left: 0.6rem;
+}
+
+.line {
+  width: 100%;
+  height: 0.9rem;
+  color: var(--pencil);
+  overflow: visible;
+}

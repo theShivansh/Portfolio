@@ -1,0 +1,242 @@
+.story {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-6);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  min-width: 0;
+}
+
+.head {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.label {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+
+.count {
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ticks {
+  display: flex;
+  gap: 3px;
+  flex: 1 1 8rem;
+  max-width: 16rem;
+}
+
+.ticks span {
+  flex: 1;
+  height: 3px;
+  background: var(--line-strong);
+  transition: background-color var(--dur-small) var(--ease-out);
+}
+
+.ticks span[data-on] {
+  background: var(--ink);
+}
+
+.controls {
+  display: flex;
+  gap: var(--s-1);
+  margin-left: auto;
+}
+
+.controls button,
+.skip {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0 var(--s-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  background: transparent;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.controls button:not(:disabled):hover,
+.skip:hover {
+  background: var(--paper-2);
+}
+
+.visual {
+  position: relative;
+  min-width: 0;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-4);
+  counter-reset: none;
+}
+
+.step {
+  padding: var(--s-4) 0 var(--s-4) var(--s-4);
+  border-left: 2px solid var(--line-strong);
+  outline-offset: 6px;
+}
+
+.stepN {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.stepTitle {
+  margin-top: var(--s-1);
+  font-size: var(--fs-h3);
+}
+
+.stepBody {
+  margin-top: var(--s-2);
+  color: var(--graphite);
+  max-width: 40ch;
+}
+
+.end {
+  height: 1px;
+}
+
+/* Desktop: pin the stage, give each step a reading block. */
+@media (min-width: 768px) {
+  .story {
+    grid-template-columns: minmax(15rem, 0.8fr) minmax(0, 1.6fr);
+    gap: var(--s-7);
+    align-items: start;
+  }
+
+  .stage {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: var(--sticky-top, 4.75rem);
+  }
+
+  .steps {
+    grid-column: 1;
+    grid-row: 1;
+    gap: 0;
+    padding-block: 8vh 24vh;
+  }
+
+  .step {
+    min-height: 44vh;
+    padding-block: var(--s-5);
+    border-left-color: var(--line);
+    opacity: 0.4;
+    transition:
+      opacity var(--dur-medium) var(--ease-out),
+      border-color var(--dur-medium) var(--ease-out);
+  }
+
+  .step[data-current] {
+    opacity: 1;
+    border-left-color: var(--ink);
+  }
+
+  .end {
+    grid-column: 1 / -1;
+  }
+}
+
+/*
+ * Step-driven reveals. Only when armed (JS + desktop); otherwise every
+ * element keeps its final, fully visible state.
+ */
+.story[data-armed] :global([data-at]) {
+  transition:
+    opacity var(--dur-medium) var(--ease-out),
+    transform var(--dur-medium) var(--ease-out),
+    stroke-dashoffset var(--dur-large) var(--ease-draw),
+    filter var(--dur-medium) var(--ease-out),
+    visibility 0s;
+}
+
+.story[data-armed]:not([data-reached~="1"]) :global([data-at="1"]),
+.story[data-armed]:not([data-reached~="2"]) :global([data-at="2"]),
+.story[data-armed]:not([data-reached~="3"]) :global([data-at="3"]),
+.story[data-armed]:not([data-reached~="4"]) :global([data-at="4"]),
+.story[data-armed]:not([data-reached~="5"]) :global([data-at="5"]),
+.story[data-armed]:not([data-reached~="6"]) :global([data-at="6"]),
+.story[data-armed]:not([data-reached~="7"]) :global([data-at="7"]) {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  /* Not reached = not focusable: no invisible controls in the tab order. */
+  visibility: hidden;
+  transition:
+    opacity var(--dur-medium) var(--ease-out),
+    transform var(--dur-medium) var(--ease-out),
+    visibility 0s linear var(--dur-medium);
+}
+
+/* Lines that draw on when their step is reached. Set --len on the path. */
+.story[data-armed]:not([data-reached~="2"]) :global(path[data-at="2"][data-draw]),
+.story[data-armed]:not([data-reached~="3"]) :global(path[data-at="3"][data-draw]),
+.story[data-armed]:not([data-reached~="4"]) :global(path[data-at="4"][data-draw]),
+.story[data-armed]:not([data-reached~="5"]) :global(path[data-at="5"][data-draw]),
+.story[data-armed]:not([data-reached~="6"]) :global(path[data-at="6"][data-draw]) {
+  stroke-dashoffset: var(--len, 100);
+  opacity: 1;
+  transform: none;
+}
+
+.story :global(path[data-draw]) {
+  stroke-dasharray: var(--len, 100);
+  stroke-dashoffset: 0;
+}
+
+/* Elements that recede once a later step is reached (e.g. sketch under system). */
+.story[data-reached~="3"] :global([data-recede-at="3"]),
+.story[data-reached~="4"] :global([data-recede-at="4"]),
+.story[data-reached~="5"] :global([data-recede-at="5"]) {
+  opacity: 0.28;
+}
+
+/* Elements that are emphasised only on their own step. */
+.story[data-step="1"] :global([data-focus-at="1"]),
+.story[data-step="2"] :global([data-focus-at="2"]),
+.story[data-step="3"] :global([data-focus-at="3"]),
+.story[data-step="4"] :global([data-focus-at="4"]),
+.story[data-step="5"] :global([data-focus-at="5"]),
+.story[data-step="6"] :global([data-focus-at="6"]) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

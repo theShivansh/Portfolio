@@ -1,0 +1,284 @@
+.dag {
+  display: grid;
+  gap: var(--s-3);
+  font-size: var(--fs-small);
+}
+
+.claim {
+  display: grid;
+  gap: var(--s-1);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-1);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.claim :global(.meta) {
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
+}
+
+.claimText {
+  font-size: 1.02rem;
+  line-height: 1.4;
+}
+
+.gate,
+.report {
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.gate span,
+.report span {
+  color: var(--accent);
+}
+
+.report span {
+  color: var(--ink);
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.6rem minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.card,
+.branchButton {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding: var(--s-3);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-1);
+  background: var(--paper);
+  text-align: left;
+}
+
+.cardName {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.cardRole {
+  font-size: 0.8125rem;
+  color: var(--graphite);
+  line-height: 1.35;
+}
+
+.hArrow {
+  position: relative;
+  align-self: center;
+  height: 1px;
+  background: var(--ink);
+}
+
+.hArrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -3px;
+  border: 3.5px solid transparent;
+  border-left: 6px solid var(--ink);
+  border-right: 0;
+}
+
+.fork {
+  position: relative;
+  height: 1.6rem;
+  border: 1px solid var(--ink);
+  border-bottom: 0;
+  margin-inline: 16.6%;
+}
+
+.fork::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--ink);
+}
+
+.fork span {
+  position: absolute;
+  left: 50%;
+  top: -0.7rem;
+  transform: translateX(-50%);
+  padding: 0 var(--s-2);
+  background: var(--paper);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.branches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: start;
+}
+
+.branch {
+  display: grid;
+  gap: var(--s-2);
+  transition: opacity var(--dur-small) var(--ease-out);
+}
+
+.branch[data-dim] {
+  opacity: 0.45;
+}
+
+.branchButton {
+  width: 100%;
+  min-height: 6.5rem;
+  border-style: dashed;
+  cursor: crosshair;
+  font: inherit;
+  color: inherit;
+  transition:
+    background-color var(--dur-micro) var(--ease-out),
+    box-shadow var(--dur-small) var(--ease-out);
+}
+
+.branchButton:hover {
+  background: var(--paper-2);
+}
+
+.branch[data-open] .branchButton {
+  border-style: solid;
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+.summary {
+  margin-top: var(--s-1);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+}
+
+.branchDetail {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-3);
+  border-left: 2px solid var(--ink);
+  background: var(--paper-2);
+  font-size: 0.8125rem;
+}
+
+.branchDetail ul {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: var(--s-1);
+}
+
+.branchDetail :global(.mono) {
+  font-size: 0.6875rem;
+  color: var(--muted-strong);
+}
+
+.judge {
+  display: grid;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-1);
+}
+
+@media (min-width: 640px) {
+  .judge {
+    grid-template-columns: minmax(10rem, 0.8fr) minmax(0, 1.4fr);
+    align-items: center;
+  }
+}
+
+.verdictText {
+  font-family: var(--ff-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: inline-block;
+  padding: 0 0.35rem;
+  background: var(--accent);
+  justify-self: start;
+}
+
+.verdict {
+  display: grid;
+  gap: var(--s-1);
+  justify-items: start;
+}
+
+.verdict :global(.mono) {
+  font-size: 0.75rem;
+  color: var(--graphite);
+}
+
+.metrics {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.metric {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.metric dt {
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+}
+
+.metric dd {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 3rem;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.metric dd :global(.mono) {
+  font-size: 0.6875rem;
+  text-align: right;
+}
+
+.bar {
+  position: relative;
+  height: 6px;
+  background: var(--paper-2);
+  border: 1px solid var(--line-strong);
+}
+
+.bar span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--ink);
+}
+
+@media (max-width: 639px) {
+  .branches {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .fork {
+    display: none;
+  }
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-2);
+  }
+  .hArrow {
+    display: none;
+  }
+}
