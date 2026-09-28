@@ -36,7 +36,14 @@
   min-width: 0;
 }
 
-@media (min-width: 900px) {
+/*
+ * The wired map is a pointer affordance: holding a system is how its
+ * shared techniques appear. A touch device has no hold, so it gets the
+ * plate list instead, and reads the connections from the key below —
+ * which carries them as text at every width anyway. Better a layout with
+ * no dead interaction than a map you cannot ask anything.
+ */
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
   .stage {
     aspect-ratio: var(--stage-w) / var(--stage-h);
     margin-top: var(--s-7);
