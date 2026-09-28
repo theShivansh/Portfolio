@@ -19,6 +19,9 @@ export const site = {
   email: "shivanshshuklajaipur@gmail.com",
   github: "https://github.com/theShivansh",
   huggingface: "https://huggingface.co/theshivansh",
+  /** The AI content channel. Engineering by day, explaining it by curiosity. */
+  youtube: "https://youtube.com/@techolaugh",
+  youtubeHandle: "@techolaugh",
   /** Set NEXT_PUBLIC_LINKEDIN_URL to show a LinkedIn link. */
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || undefined,
   /**
@@ -28,15 +31,30 @@ export const site = {
   resume: process.env.NEXT_PUBLIC_RESUME_PATH || undefined,
 } as const;
 
-export type Chapter = { id: string; n: string; label: string };
+export type Chapter = {
+  id: string;
+  n: string;
+  /** One word, for the instrument row in the header. */
+  label: string;
+  /** The chapter as the page itself names it. */
+  long: string;
+};
 
-/** Navigation chapters, in page order. Section ids must match. */
+/**
+ * The chapters, in page order. Section ids must match.
+ * The order is an argument: what the systems are, then what they are not
+ * allowed to do, then how that is checked, then where it failed anyway.
+ */
 export const chapters: Chapter[] = [
-  { id: "systems", n: "01", label: "Systems" },
-  { id: "work", n: "02", label: "Work" },
-  { id: "experience", n: "03", label: "Experience" },
-  { id: "architecture", n: "04", label: "Architecture" },
-  { id: "notes", n: "05", label: "Notes" },
-  { id: "about", n: "06", label: "About" },
-  { id: "contact", n: "07", label: "Contact" },
+  { id: "map", n: "01", label: "Map", long: "The map" },
+  { id: "systems", n: "02", label: "Kinds", long: "Three kinds of system" },
+  { id: "work", n: "03", label: "Work", long: "Selected work" },
+  { id: "boundaries", n: "04", label: "Trust", long: "What I don't trust" },
+  { id: "architecture", n: "05", label: "Method", long: "How I build it" },
+  { id: "evidence", n: "06", label: "Proof", long: "How I test it" },
+  { id: "failures", n: "07", label: "Broke", long: "What broke" },
+  { id: "notes", n: "08", label: "Lab", long: "What I learned" },
+  { id: "experience", n: "09", label: "Field", long: "Where I've been" },
+  { id: "about", n: "10", label: "Why", long: "Why I build this way" },
+  { id: "contact", n: "11", label: "Next", long: "What's next" },
 ];

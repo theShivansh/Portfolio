@@ -51,6 +51,16 @@
 
 .node[data-kind="gate"] {
   background: var(--accent);
+  color: var(--on-accent);
+}
+
+/*
+ * The detail line sets its own grey, which inverts with the world. On the
+ * signal colour it has to stay dark, so it is pinned back here.
+ */
+.node[data-kind="gate"] .nodeDetail {
+  color: var(--on-accent);
+  opacity: 0.72;
 }
 
 .node[data-kind="io"] {
@@ -167,6 +177,7 @@
 
 .swatch[data-kind="gate"] {
   background: var(--accent);
+  color: var(--on-accent);
 }
 
 .swatch[data-kind="io"] {

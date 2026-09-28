@@ -1,0 +1,160 @@
+.intro {
+  margin-top: var(--s-4);
+  max-width: 50ch;
+  color: var(--graphite);
+}
+
+.note {
+  margin-top: var(--s-5);
+  max-width: 44ch;
+  transform: rotate(-1.4deg);
+  transform-origin: left center;
+}
+
+.list {
+  display: grid;
+  gap: 0;
+  margin: var(--s-6) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+
+@media (min-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-7);
+  }
+}
+
+.item {
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+
+.n {
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  color: var(--muted-strong);
+}
+
+.subject {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 700;
+  font-variation-settings: "wdth" 80;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* ─── Model ─✕─ subject ←─ owner ──────────────────────── */
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+  padding: var(--s-3) 0;
+  border-top: 1px dashed var(--line-strong);
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.actorModel,
+.actorOwner,
+.slot {
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.actorModel {
+  color: var(--muted-strong);
+  text-decoration: line-through;
+  text-decoration-color: var(--line-strong);
+}
+
+.slot {
+  padding: 0.25rem 0.5rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 0 0 1px var(--ink);
+  font-weight: 500;
+}
+
+.actorOwner {
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.8125rem;
+}
+
+.cut {
+  width: 4.6rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+  color: var(--muted-strong);
+  overflow: visible;
+}
+
+.cutLine {
+  opacity: 0.7;
+}
+
+/* The cross is the only ink that says "no". It stays dark. */
+.cross {
+  color: var(--ink);
+  stroke: var(--ink);
+}
+
+.into {
+  width: 3.9rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+  color: var(--ink);
+  overflow: visible;
+}
+
+/* ─── Copy ────────────────────────────────────────────── */
+
+.rule {
+  margin-top: var(--s-4);
+  max-width: 44ch;
+  font-size: var(--fs-lead);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.mechanism {
+  margin-top: var(--s-3);
+  max-width: 54ch;
+  font-size: var(--fs-small);
+  color: var(--graphite);
+}
+
+.where {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-4);
+  margin-top: var(--s-4);
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.source {
+  color: var(--muted-strong);
+  text-transform: none;
+  letter-spacing: 0;
+}

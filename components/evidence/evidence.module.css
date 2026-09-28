@@ -117,6 +117,7 @@
 
 .row[open] .area {
   background: var(--accent);
+  color: var(--on-accent);
   justify-self: start;
   padding: 0 0.3rem;
 }
@@ -165,4 +166,10 @@
   .row[open]::details-content {
     height: auto;
   }
+}
+
+.sectionLead {
+  margin-top: var(--s-4);
+  max-width: 50ch;
+  color: var(--graphite);
 }

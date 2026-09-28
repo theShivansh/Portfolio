@@ -1,0 +1,277 @@
+/*
+ * Worlds: surfaces as token rebindings.
+ *
+ * A world sets paper, ink and the greys between them, plus its own grain.
+ * Anything built from those tokens moves into the world without knowing it
+ * has. The signal colour is deliberately NOT rebound: lime means the same
+ * thing in every world, which is what makes it readable as a signal.
+ *
+ * [data-world] on a section paints that section. The watcher mirrors the
+ * world at the top of the viewport onto <html data-surface>, which is used
+ * only for the page background behind overscroll and for the header.
+ */
+
+/* ─── Dark base ───────────────────────────────────────── */
+
+/*
+ * Shared by every dark world and by the header while one is under it.
+ * Individual worlds override paper and ink below.
+ */
+.dark,
+[data-world="vault"],
+[data-world="chamber"],
+[data-world="recorder"],
+html[data-surface-dark] [data-surface-follow] {
+  --paper: #0e0f12;
+  --paper-2: #16181c;
+  --paper-3: #1f2126;
+  --ink: #f2f1ec;
+  --graphite: rgba(242, 241, 236, 0.78);
+  --muted: rgba(242, 241, 236, 0.58);
+  --muted-strong: rgba(242, 241, 236, 0.66);
+  --pencil: rgba(242, 241, 236, 0.74);
+  --line: rgba(242, 241, 236, 0.14);
+  --line-strong: rgba(242, 241, 236, 0.34);
+  --accent-ink: var(--accent);
+  --shadow-sheet: 0 1px 0 rgba(0, 0, 0, 0.4), 0 18px 40px -28px rgba(0, 0, 0, 0.85);
+  --shadow-press: 0 1px 0 rgba(0, 0, 0, 0.5);
+  --grain: none;
+}
+
+/* ─── The light worlds ────────────────────────────────── */
+
+[data-world="paper"],
+html[data-surface="paper"] [data-surface-follow] {
+  --paper: #f3f1e9;
+  --paper-2: #e9e6dc;
+  --paper-3: #dfdbcf;
+  --ink: #10110f;
+  --graphite: #4b4d47;
+  --muted: #7b7c74;
+  --muted-strong: #62635c;
+  --pencil: #4b4d47;
+  --line: rgba(16, 17, 15, 0.14);
+  --line-strong: rgba(16, 17, 15, 0.34);
+  --grain: var(--grain-noise);
+}
+
+/* A seamless photographic sweep: deeper, cooler, no ruling. */
+[data-world="studio"],
+html[data-surface="studio"] [data-surface-follow] {
+  --paper: #e2ded4;
+  --paper-2: #d7d2c6;
+  --paper-3: #cbc5b7;
+  --ink: #131419;
+  --graphite: #45474e;
+  --muted: #6e7079;
+  --muted-strong: #565860;
+  --pencil: #45474e;
+  --line: rgba(19, 20, 25, 0.16);
+  --line-strong: rgba(19, 20, 25, 0.36);
+  --grain: var(--grain-sweep);
+}
+
+/* Plotting paper: pale, cold, faintly gridded. */
+[data-world="field"],
+html[data-surface="field"] [data-surface-follow] {
+  --paper: #dfe4e7;
+  --paper-2: #d3d9dd;
+  --paper-3: #c6ced3;
+  --ink: #0f151b;
+  --graphite: #414b53;
+  --muted: #6b757d;
+  --muted-strong: #525c64;
+  --pencil: #414b53;
+  --line: rgba(15, 21, 27, 0.16);
+  --line-strong: rgba(15, 21, 27, 0.34);
+  --grain: var(--grain-plot);
+}
+
+/* Clinical: almost white, thin rules, a lot of air. */
+[data-world="clinic"],
+html[data-surface="clinic"] [data-surface-follow] {
+  --paper: #f8f8f6;
+  --paper-2: #eeeeeb;
+  --paper-3: #e3e3df;
+  --ink: #101211;
+  --graphite: #494b49;
+  --muted: #767875;
+  --muted-strong: #5b5d5a;
+  --pencil: #494b49;
+  --line: rgba(16, 18, 17, 0.11);
+  --line-strong: rgba(16, 18, 17, 0.28);
+  --grain: none;
+}
+
+/* The quiet room: warm, low contrast, nothing competing. */
+[data-world="calm"],
+html[data-surface="calm"] [data-surface-follow] {
+  --paper: #ece8df;
+  --paper-2: #e2ddd2;
+  --paper-3: #d7d1c4;
+  --ink: #20221d;
+  --graphite: #4f524a;
+  --muted: #7d8076;
+  --muted-strong: #63665d;
+  --pencil: #4f524a;
+  --line: rgba(32, 34, 29, 0.12);
+  --line-strong: rgba(32, 34, 29, 0.3);
+  --grain: none;
+}
+
+/* Aged stock, browned at the edges. */
+[data-world="archive"],
+html[data-surface="archive"] [data-surface-follow] {
+  --paper: #e7e0cf;
+  --paper-2: #ddd5c1;
+  --paper-3: #d1c8b2;
+  --ink: #272319;
+  --graphite: #55503f;
+  --muted: #837d6a;
+  --muted-strong: #676150;
+  --pencil: #55503f;
+  --line: rgba(39, 35, 25, 0.16);
+  --line-strong: rgba(39, 35, 25, 0.36);
+  --grain: var(--grain-aged);
+}
+
+/* ─── The dark worlds ─────────────────────────────────── */
+
+/* Cold storage, ruled like a ledger. */
+[data-world="vault"],
+html[data-surface="vault"] [data-surface-follow] {
+  --paper: #0d1014;
+  --paper-2: #151a20;
+  --ink: #edf1f5;
+  --graphite: rgba(237, 241, 245, 0.76);
+  --muted-strong: rgba(237, 241, 245, 0.64);
+  --line: rgba(237, 241, 245, 0.13);
+  --line-strong: rgba(237, 241, 245, 0.32);
+  --grain: var(--grain-ledger);
+}
+
+/* One light, aimed at one claim. */
+[data-world="chamber"],
+html[data-surface="chamber"] [data-surface-follow] {
+  --paper: #07070a;
+  --paper-2: #101015;
+  --ink: #f4f1ea;
+  --graphite: rgba(244, 241, 234, 0.74);
+  --muted-strong: rgba(244, 241, 234, 0.62);
+  --line: rgba(244, 241, 234, 0.12);
+  --line-strong: rgba(244, 241, 234, 0.3);
+  --grain: var(--grain-spot);
+}
+
+/*
+ * The header opts in with [data-surface-follow]. The watcher mirrors the
+ * world under it onto <html data-surface>, so the bar is rebound above and
+ * travels with the page instead of floating over it in a fixed colour.
+ */
+
+/* ─── Painting a world ────────────────────────────────── */
+
+/*
+ * A section that declares a world paints it edge to edge, and its grain
+ * sits under its own content only.
+ */
+[data-world] {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+[data-world]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--grain, none);
+  background-repeat: repeat;
+}
+
+[data-world] > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Grains ──────────────────────────────────────────── */
+
+:root {
+  /* The notebook's paper tooth. */
+  --grain-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .06 0 0 0 0 .07 0 0 0 0 .06 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* A soft vertical falloff, like light down a studio sweep. */
+  --grain-sweep: linear-gradient(to bottom, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 42%, rgba(19, 20, 25, 0.07));
+
+  /* Plotting grid, 32px. */
+  --grain-plot: linear-gradient(rgba(15, 21, 27, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 21, 27, 0.07) 1px, transparent 1px);
+
+  /* Foxed, uneven age. */
+  --grain-aged: radial-gradient(ellipse at 15% 10%, rgba(120, 96, 50, 0.1), transparent 55%),
+    radial-gradient(ellipse at 85% 70%, rgba(120, 96, 50, 0.08), transparent 50%);
+
+  /* Ledger ruling. */
+  --grain-ledger: repeating-linear-gradient(
+    to bottom,
+    rgba(237, 241, 245, 0.05) 0,
+    rgba(237, 241, 245, 0.05) 1px,
+    transparent 1px,
+    transparent 34px
+  );
+
+  /* A single overhead light, centred. */
+  --grain-spot: radial-gradient(ellipse 70% 46% at 50% 26%, rgba(244, 241, 234, 0.12), transparent 70%);
+}
+
+[data-world="field"]::before {
+  background-size: 32px 32px;
+}
+
+[data-world="studio"]::before,
+[data-world="chamber"]::before,
+[data-world="archive"]::before {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ─── The page behind everything ──────────────────────── */
+
+/*
+ * The watcher mirrors the world under the header onto <html>, so overscroll
+ * and the browser's own chrome follow the world rather than snapping back
+ * to paper.
+ */
+html {
+  transition: background-color var(--dur-large) var(--ease-out);
+}
+
+html[data-surface="studio"] {
+  background: #e2ded4;
+}
+html[data-surface="vault"] {
+  background: #0d1014;
+}
+html[data-surface="chamber"] {
+  background: #07070a;
+}
+html[data-surface="field"] {
+  background: #dfe4e7;
+}
+html[data-surface="clinic"] {
+  background: #f8f8f6;
+}
+html[data-surface="calm"] {
+  background: #ece8df;
+}
+html[data-surface="archive"] {
+  background: #e7e0cf;
+}
+html[data-surface="recorder"] {
+  background: #0e0f12;
+}
+
+:root[data-motion="reduced"] html {
+  transition: none;
+}

@@ -71,3 +71,210 @@
   font-size: 1rem;
   top: 0.15rem;
 }
+
+/* ─── The experiment archive ──────────────────────────── */
+
+.tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+  padding: var(--s-2) 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.experiments {
+  display: grid;
+  gap: var(--s-5);
+  margin: var(--s-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 1100px) {
+  .experiments {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-6);
+  }
+}
+
+/* An index card: squared off, filed, with a stamp in the corner. */
+.experiment {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-5);
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  box-shadow: var(--shadow-press);
+}
+
+.expHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.expId {
+  font-weight: 500;
+}
+
+.expWhere {
+  color: var(--muted-strong);
+}
+
+.expTitle {
+  margin-top: var(--s-2);
+  font-size: 1.5rem;
+  font-variation-settings: "wdth" 86;
+  line-height: 1.1;
+}
+
+.expFields {
+  margin: var(--s-4) 0 0;
+}
+
+.expRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-1);
+  padding: var(--s-3) 0;
+  border-top: 1px dashed var(--line-strong);
+}
+
+@media (min-width: 560px) {
+  .expRow {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: var(--s-4);
+    align-items: baseline;
+  }
+}
+
+.expKey {
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.expVal {
+  margin: 0;
+  color: var(--graphite);
+  font-size: var(--fs-small);
+}
+
+/* The gate result is the one word that decides the card. */
+.gateFlag {
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 0.1rem 0.35rem;
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.expRow[data-gate="passed"] .gateFlag {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.expRow[data-gate="failed"] .gateFlag {
+  background: transparent;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.expFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-top: auto;
+  padding-top: var(--s-4);
+}
+
+.stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 8.5rem;
+  padding: 0.45rem 0.9rem;
+  rotate: -3.5deg;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.stamp[data-shipped] {
+  color: var(--accent-ink);
+  rotate: 2.5deg;
+}
+
+.stampBox {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: currentColor;
+  opacity: 0.85;
+}
+
+.stamp span {
+  position: relative;
+}
+
+.expSource {
+  font-family: var(--ff-mono);
+  font-size: 0.625rem;
+  color: var(--muted-strong);
+}
+
+/* ─── Shorter notes ───────────────────────────────────── */
+
+.notesHead {
+  position: relative;
+  margin-top: var(--s-9);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--ink);
+}
+
+.notesTitle {
+  font-size: var(--fs-h3);
+  font-variation-settings: "wdth" 88;
+}
+
+.notesNote {
+  max-width: 30ch;
+  margin-top: var(--s-2);
+}
+
+@media (min-width: 1024px) {
+  .notesNote {
+    position: absolute;
+    top: var(--s-4);
+    right: 0;
+    max-width: 22rem;
+    margin: 0;
+    text-align: right;
+  }
+}

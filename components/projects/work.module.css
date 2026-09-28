@@ -176,3 +176,18 @@
   width: 100%;
   height: auto;
 }
+
+/* ─── World-era layout ────────────────────────────────── */
+
+/*
+ * A slim paper beat between the three big worlds and the three smaller
+ * ones, so the change of pace is announced rather than just happening.
+ */
+.band {
+  position: relative;
+  padding-block: var(--s-9);
+}
+
+.archiveWorld {
+  position: relative;
+}

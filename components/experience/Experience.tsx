@@ -3,6 +3,7 @@ import { roles } from "@/lib/experience";
 import { ArchitectureDiagram } from "../diagrams/ArchitectureDiagram";
 import { SectionMarker } from "../motion/primitives";
 import { Gauge } from "./Gauge";
+import { Results } from "./Results";
 import styles from "./experience.module.css";
 
 /**
@@ -14,10 +15,10 @@ export function Experience({ as: H = "h2" }: { as?: "h1" | "h2" }) {
   return (
     <section id="experience" data-chapter="experience" className="section" aria-labelledby="experience-title">
       <div className="page sheet">
-        <SectionMarker n="03" label="Experience" note="two postings, both sides of the stack" />
+        <SectionMarker n="09" label="Field" note="two postings, both sides of the stack" />
         <div className="body">
           <H id="experience-title" className="h-section">
-            Experience
+            Where I&apos;ve been
           </H>
           <p className={`lead ${styles.intro}`}>
             Two roles, one on each side of an AI system: the retrieval and agents that answer, then the cloud and Linux
@@ -101,6 +102,8 @@ export function Experience({ as: H = "h2" }: { as?: "h1" | "h2" }) {
               </li>
             ))}
           </ol>
+
+          <Results />
         </div>
       </div>
     </section>

@@ -22,6 +22,11 @@
   --accent: #c8ff00;
   --accent-soft: rgba(200, 255, 0, 0.16);
   --accent-ink: #3d4d00; /* legible "lime-family" text on paper */
+  /*
+   * Text drawn ON the signal colour. Never rebound by a world: lime is
+   * always lime, so what is legible on top of it is always the same.
+   */
+  --on-accent: #10110f;
 
   /* System surfaces (one localized immersion) */
   --black: #080908;

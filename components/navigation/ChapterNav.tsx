@@ -7,14 +7,17 @@ import type { Chapter } from "@/lib/site";
 import styles from "./nav.module.css";
 
 /**
- * Chapter links plus orientation: which chapter the reader is in now.
- * One IntersectionObserver watches the chapter sections, nothing else.
+ * Orientation, built like an instrument rather than a menu: ten ticks, one
+ * per chapter, and a single readout naming the one you are in. Hovering a
+ * tick reads it out without moving you there. Every tick is still a plain
+ * link with the chapter's full name as its accessible name.
  */
 export function ChapterNav({ chapters }: { chapters: Chapter[] }) {
   const pathname = usePathname();
   const [observed, setObserved] = useState<string | null>(null);
   // Only the home page has chapters; elsewhere nothing is current.
   const current = pathname === "/" ? observed : null;
+  const [hovered, setHovered] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -49,35 +52,43 @@ export function ChapterNav({ chapters }: { chapters: Chapter[] }) {
   }, [open]);
 
   const active = chapters.find((c) => c.id === current);
-
-  const list = (
-    <ol className={styles.chapters}>
-      {chapters.map((c) => (
-        <li key={c.id}>
-          <Link
-            href={`/#${c.id}`}
-            className={styles.chapter}
-            aria-current={c.id === current ? "location" : undefined}
-            onClick={() => setOpen(false)}
-          >
-            <span className={styles.chapterN}>[{c.n}]</span> {c.label}
-          </Link>
-        </li>
-      ))}
-    </ol>
-  );
+  const readout = chapters.find((c) => c.id === (hovered ?? current));
 
   return (
     <>
       <nav aria-label="Chapters" className={styles.desktopNav}>
-        {list}
+        <ol className={styles.ticks} onMouseLeave={() => setHovered(null)}>
+          {chapters.map((c) => (
+            <li key={c.id}>
+              <Link
+                href={`/#${c.id}`}
+                className={styles.tick}
+                aria-current={c.id === current ? "location" : undefined}
+                data-peek={c.id === hovered || undefined}
+                onMouseEnter={() => setHovered(c.id)}
+                onFocus={() => setHovered(c.id)}
+                onBlur={() => setHovered(null)}
+              >
+                <span aria-hidden="true">{c.n}</span>
+                <span className="visually-hidden">{c.long}</span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+        {/* A duplicate of the name already on each tick, so it is hidden. */}
+        <p className={styles.tickReadout} aria-hidden="true" data-idle={readout ? undefined : true}>
+          {readout ? readout.long : "Field note"}
+        </p>
       </nav>
 
       <div className={styles.mobileNav}>
         <p className={styles.readout} aria-live="polite">
           {active ? (
             <>
-              <span className={styles.chapterN}>{active.n} /</span> {active.label}
+              <span className={styles.chapterN}>
+                {active.n} / {chapters.length}
+              </span>{" "}
+              {active.label}
             </>
           ) : (
             <span className={styles.chapterN}>Field note</span>
@@ -94,7 +105,20 @@ export function ChapterNav({ chapters }: { chapters: Chapter[] }) {
           {open ? "Close" : "Menu"}
         </button>
         <nav id={menuId} aria-label="Chapters" className={styles.menu} data-open={open} hidden={!open}>
-          {list}
+          <ol className={styles.chapters}>
+            {chapters.map((c) => (
+              <li key={c.id}>
+                <Link
+                  href={`/#${c.id}`}
+                  className={styles.chapter}
+                  aria-current={c.id === current ? "location" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  <span className={styles.chapterN}>[{c.n}]</span> {c.long}
+                </Link>
+              </li>
+            ))}
+          </ol>
         </nav>
       </div>
     </>

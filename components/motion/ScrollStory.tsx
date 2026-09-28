@@ -15,8 +15,16 @@ type Props = {
   /** Where "Skip" lands. Defaults to the end of this story. */
   skipTo?: string;
   skipLabel?: string;
+  /**
+   * How much scroll each reading block gets. "slow" gives the eye longer on
+   * a step that carries a decision. It lengthens the page; it never takes
+   * the wheel away.
+   */
+  pace?: "normal" | "slow";
   className?: string;
 };
+
+const paceHeight = { normal: "44vh", slow: "62vh" } as const;
 
 /**
  * Soft friction: a pinned visual that advances one step per reading block.
@@ -27,7 +35,16 @@ type Props = {
  *   state and the steps read as short sections.
  * - The visual reacts through CSS: [data-reached~="n"] [data-at="n"].
  */
-export function ScrollStory({ id, label, steps, visual, skipTo, skipLabel = "Skip", className }: Props) {
+export function ScrollStory({
+  id,
+  label,
+  steps,
+  visual,
+  skipTo,
+  skipLabel = "Skip",
+  pace = "normal",
+  className,
+}: Props) {
   const [active, setActive] = useState(1);
   const [armed, setArmed] = useState(false);
   const [stickyTop, setStickyTop] = useState<number | null>(null);
@@ -117,7 +134,7 @@ export function ScrollStory({ id, label, steps, visual, skipTo, skipLabel = "Ski
       data-armed={armed || undefined}
       data-reached={reached}
       data-step={armed ? active : count}
-      style={{ "--count": count } as React.CSSProperties}
+      style={{ "--count": count, "--step-min": paceHeight[pace] } as React.CSSProperties}
     >
       <div
         ref={stageRef}

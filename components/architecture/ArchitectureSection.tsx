@@ -7,13 +7,14 @@ export function ArchitectureSection() {
   return (
     <section id="architecture" data-chapter="architecture" className="section" aria-labelledby="architecture-title">
       <div className="page sheet">
-        <SectionMarker n="04" label="Architecture" note="how a box becomes a system" />
+        <SectionMarker n="05" label="Method" note="how a box becomes a system" />
         <div className="body">
           <h2 id="architecture-title" className="h-section">
-            How I build AI
+            How I build it
           </h2>
           <p className={`lead ${styles.intro}`}>
-            I start with a sketch and keep asking what the model should not decide. The answers become the architecture.
+            Those six boundaries are not a philosophy, they are a drawing exercise. I start with a sketch and keep
+            asking what the model should not decide. The answers become the architecture.
           </p>
 
           <div className={styles.story}>

@@ -4,6 +4,7 @@ import { SiteNav } from "@/components/navigation/SiteNav";
 import { SkipLinks } from "@/components/navigation/SkipLinks";
 import { Footer } from "@/components/contact/Footer";
 import { Tracker } from "@/components/accessibility/Tracker";
+import { WorldWatcher } from "@/components/motion/WorldWatcher";
 import { bootScript } from "@/lib/motion";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
         <Tracker />
+        <WorldWatcher />
       </body>
     </html>
   );

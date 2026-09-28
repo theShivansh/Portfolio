@@ -157,7 +157,7 @@
   }
 
   .step {
-    min-height: 44vh;
+    min-height: var(--step-min, 44vh);
     padding-block: var(--s-5);
     border-left-color: var(--line);
     opacity: 0.4;

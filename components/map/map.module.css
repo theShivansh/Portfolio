@@ -1,0 +1,307 @@
+.intro {
+  margin-top: var(--s-4);
+  max-width: 54ch;
+  color: var(--graphite);
+}
+
+/* ─── The stage ───────────────────────────────────────── */
+
+/*
+ * Below 900px the stage stops being a map and becomes a plain column of
+ * plates. The connections are never only in the drawing: the key below
+ * carries them as text at every width.
+ */
+.stage {
+  position: relative;
+  display: grid;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+.wires,
+.wireNotes {
+  display: none;
+}
+
+.nodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nodeSlot {
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .stage {
+    aspect-ratio: var(--stage-w) / var(--stage-h);
+    margin-top: var(--s-7);
+    margin-inline: auto;
+    width: 100%;
+    max-width: 62rem;
+    display: block;
+  }
+
+  .wires {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--line-strong);
+    overflow: visible;
+  }
+
+  .wireNotes {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .nodes {
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+
+  .nodeSlot {
+    position: absolute;
+    width: 12.5rem;
+    translate: -50% -50%;
+    transition: opacity var(--dur-small) var(--ease-out);
+  }
+
+  .nodeSlot[data-dim] {
+    opacity: 0.32;
+  }
+}
+
+/* ─── Wires ───────────────────────────────────────────── */
+
+.wire line {
+  stroke-width: 1;
+  transition:
+    stroke var(--dur-small) var(--ease-out),
+    opacity var(--dur-small) var(--ease-out);
+}
+
+.wire[data-kind="lineage"] line {
+  stroke-dasharray: 5 5;
+}
+
+.wire[data-state="off"] {
+  opacity: 0.18;
+}
+
+.wire[data-state="on"] line {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+
+/* The technique is written on the line only while that system is held. */
+.wireLabel {
+  font-family: var(--ff-hand);
+  font-size: 21px;
+  fill: var(--pencil);
+  /* A paper halo, so the note stays readable where it crosses a plate. */
+  stroke: var(--paper);
+  stroke-width: 5px;
+  paint-order: stroke fill;
+  opacity: 0;
+  transition: opacity var(--dur-small) var(--ease-out);
+}
+
+.wireLabel[data-state="on"] {
+  opacity: 1;
+}
+
+/* ─── A node: a specimen plate ────────────────────────── */
+
+.node {
+  position: relative;
+  display: grid;
+  gap: var(--s-1);
+  padding: var(--s-3);
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-1);
+  text-decoration: none;
+  color: var(--ink);
+  transition:
+    border-color var(--dur-micro) var(--ease-out),
+    box-shadow var(--dur-small) var(--ease-out),
+    transform var(--dur-small) var(--ease-out);
+}
+
+.node[data-tier="primary"] {
+  border-color: var(--ink);
+  box-shadow: var(--shadow-press);
+}
+
+.node[data-tier="archive"] {
+  border-style: dashed;
+  color: var(--graphite);
+}
+
+.node:hover,
+.node:focus-visible {
+  border-color: var(--ink);
+  box-shadow: var(--shadow-sheet);
+  transform: translateY(-2px);
+}
+
+.nodeN {
+  font-family: var(--ff-mono);
+  font-size: 0.625rem;
+  letter-spacing: var(--track-meta);
+  color: var(--muted-strong);
+}
+
+.glyph {
+  width: 100%;
+  max-width: 5.5rem;
+  height: auto;
+  margin: var(--s-1) 0;
+  color: var(--ink);
+}
+
+/* Dashed strokes inside a glyph are the machine's guess. */
+.guess {
+  opacity: 0.55;
+}
+
+.settled {
+  stroke-width: 2.4;
+}
+
+.struck {
+  opacity: 0.4;
+}
+
+.nodeTitle {
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.nodeArtifact {
+  font-family: var(--ff-hand);
+  font-size: 1.15rem;
+  line-height: 1.15;
+  color: var(--pencil);
+}
+
+/* ─── The key: the lines, as text ─────────────────────── */
+
+.wiresKey {
+  margin-top: var(--s-7);
+}
+
+.keyList {
+  display: grid;
+  gap: 0;
+  margin: var(--s-3) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.keyList li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-1);
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .keyList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-6);
+  }
+  .keyList li {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    gap: var(--s-4);
+    align-items: baseline;
+  }
+}
+
+.keyPair {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4em;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.keyJoin {
+  color: var(--muted-strong);
+}
+
+.keyList li[data-kind="lineage"] .keyLabel {
+  font-style: italic;
+}
+
+.keyLabel {
+  color: var(--graphite);
+  font-size: var(--fs-small);
+}
+
+/* ─── Ledger ──────────────────────────────────────────── */
+
+.ledger {
+  margin-top: var(--s-7);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--ink);
+}
+
+.ledgerList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-5);
+  margin: var(--s-3) 0 0;
+}
+
+.ledgerItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45em;
+  font-size: var(--fs-small);
+}
+
+.ledgerN {
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.ledgerItem dd {
+  margin: 0;
+  color: var(--graphite);
+}
+
+.built {
+  margin-top: var(--s-5);
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--graphite);
+}
+
+.built span {
+  display: block;
+}

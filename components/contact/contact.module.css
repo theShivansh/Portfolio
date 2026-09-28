@@ -1,3 +1,44 @@
+/* ─── The last screen ──────────────────────────────── */
+
+.close {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.closeName {
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.closeRoles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+/* Seven lines, one per system, arriving at one point. */
+.converge {
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+  margin: var(--s-6) 0 var(--s-7);
+  color: var(--line-strong);
+  overflow: visible;
+}
+
+.convergePoint {
+  fill: var(--accent);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
 .title {
   font-size: var(--fs-h1);
   font-weight: 700;
@@ -5,6 +46,7 @@
   letter-spacing: -0.035em;
   line-height: 0.95;
   max-width: 14ch;
+  text-transform: uppercase;
 }
 
 .sub {

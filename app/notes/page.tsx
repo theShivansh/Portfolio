@@ -14,7 +14,7 @@ export default function NotesPage() {
   return (
     <main id="main" tabIndex={-1} className={styles.main}>
       <div className="page sheet">
-        <SectionMarker n="05" label="Notes" />
+        <SectionMarker n="08" label="Lab" />
         <div className="body">
           <h1 className={styles.title}>Lab notes</h1>
           <p className={styles.lead}>

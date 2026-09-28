@@ -1,0 +1,34 @@
+/*
+ * A case file's world. Sections are already the full width of <main>, so
+ * the surface runs edge to edge without any bleed trick; the world only
+ * has to paint and space itself. Every colour inside comes from the
+ * world's own tokens.
+ */
+.world {
+  position: relative;
+}
+
+.marker {
+  display: grid;
+  gap: var(--s-1);
+  align-content: start;
+}
+
+.n {
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--muted-strong);
+}
+
+.note {
+  margin-top: var(--s-2);
+  font-size: 1.15rem;
+  line-height: 1.15;
+}
+
+/* A hairline where one world meets the next, so the cut reads as a cut. */
+.world + .world {
+  box-shadow: inset 0 1px 0 var(--line-strong);
+}

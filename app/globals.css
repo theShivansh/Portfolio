@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./tokens.css";
+@import "./worlds.css";
 
 @theme inline {
   --color-paper: var(--paper);
@@ -30,7 +31,7 @@ body {
   font-optical-sizing: auto;
   background-color: var(--paper);
   /* Paper grain: a static SVG turbulence tile, ~600 bytes. */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .06 0 0 0 0 .07 0 0 0 0 .06 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: var(--grain-noise);
   overflow-x: clip;
 }
 
@@ -72,9 +73,16 @@ svg {
   border-radius: var(--r-1);
 }
 
+/*
+ * Dark surfaces rebind their tokens in worlds.css, so any component
+ * dropped into one inverts without knowing it is on a dark surface.
+ */
 .dark :focus-visible,
-.dark:focus-visible {
-  outline-color: var(--white);
+.dark:focus-visible,
+[data-world="vault"] :focus-visible,
+[data-world="chamber"] :focus-visible,
+[data-world="recorder"] :focus-visible {
+  outline-color: var(--ink);
 }
 
 /* ─── Layout primitives ───────────────────────────────── */
@@ -167,6 +175,15 @@ svg {
   background: linear-gradient(transparent 55%, var(--accent) 55%, var(--accent) 92%, transparent 92%);
   padding-inline: 0.08em;
   box-decoration-break: clone;
+}
+
+/* On a dark surface the highlighter needs dark text under it, not light. */
+[data-world="vault"] .mark,
+[data-world="chamber"] .mark,
+[data-world="recorder"] .mark,
+.dark .mark {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .live-dot {

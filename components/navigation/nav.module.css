@@ -27,8 +27,19 @@
   position: sticky;
   top: 0;
   z-index: var(--z-nav);
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  /*
+   * Near-opaque: at 88% the blur smeared over the dark chapters. The paper
+   * token is rebound by worlds.css while a dark world is underneath, so
+   * the bar travels with the page rather than floating above it.
+   */
+  background: color-mix(in srgb, var(--paper) 97%, transparent);
   backdrop-filter: saturate(1.2) blur(10px);
+  /* Re-apply the token: rebinding --ink alone does not change inherited colour. */
+  color: var(--ink);
+  transition:
+    background-color var(--dur-medium) var(--ease-out),
+    border-color var(--dur-medium) var(--ease-out),
+    color var(--dur-medium) var(--ease-out);
   border-bottom: 1px solid var(--line);
 }
 
@@ -51,7 +62,92 @@
 
 .desktopNav {
   display: none;
+  align-items: center;
+  gap: var(--s-4);
   margin-inline: auto;
+}
+
+/* ─── The instrument row ──────────────────────────────── */
+
+/*
+ * Ten ticks, one per chapter. The row is the orientation; the readout
+ * beside it names whichever tick is current or under the pointer.
+ */
+.ticks {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tick {
+  --tick-h: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 1.55rem;
+  height: 2.25rem;
+  padding-bottom: 0.15rem;
+  font-family: var(--ff-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--muted-strong);
+  transition: color var(--dur-micro) var(--ease-out);
+}
+
+/* The tick mark itself: a short rule that grows when it is the one. */
+.tick::before {
+  content: "";
+  position: absolute;
+  top: 0.7rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 1px;
+  height: var(--tick-h);
+  background: var(--line-strong);
+  transition:
+    height var(--dur-small) var(--ease-out),
+    background-color var(--dur-micro) var(--ease-out);
+}
+
+.tick:hover,
+.tick[data-peek] {
+  color: var(--ink);
+}
+
+.tick:hover::before,
+.tick[data-peek]::before {
+  height: 0.85rem;
+  background: var(--ink);
+}
+
+.tick[aria-current="location"] {
+  color: var(--ink);
+}
+
+.tick[aria-current="location"]::before {
+  height: 1.1rem;
+  width: 3px;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.tickReadout {
+  min-width: 9.5rem;
+  font-family: var(--ff-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.tickReadout[data-idle] {
+  color: var(--muted-strong);
 }
 
 .chapters {
@@ -249,9 +345,9 @@
   }
 }
 
-@media (min-width: 1360px) {
+@media (min-width: 1080px) {
   .desktopNav {
-    display: block;
+    display: flex;
   }
   .mobileNav {
     display: none;

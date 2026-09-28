@@ -247,6 +247,7 @@
 
 .status[data-status="test-verified"] {
   background: var(--accent);
+  color: var(--on-accent);
   border-color: var(--ink);
 }
 

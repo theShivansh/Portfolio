@@ -222,6 +222,7 @@
   margin-left: 0.2rem;
   padding: 0 0.3rem;
   background: var(--accent);
+  color: var(--on-accent);
 }
 
 .small {
@@ -263,6 +264,7 @@
   font-weight: 500;
   padding: 0 0.3rem;
   background: var(--accent);
+  color: var(--on-accent);
 }
 
 .answer {
@@ -307,7 +309,7 @@
 .chip[aria-expanded="true"] {
   background: var(--accent);
   border-color: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
 }
 
 .chip:focus-visible {

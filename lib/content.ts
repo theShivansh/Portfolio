@@ -245,7 +245,10 @@ export const timeline = [
   {
     year: "2023",
     phase: "Foundations",
-    entries: ["GitHub account opened, September 2023."],
+    entries: [
+      "Winner, Google AppSheet no-code challenge: the first thing shipped to a deadline.",
+      "GitHub account opened, September 2023.",
+    ],
   },
   {
     year: "2025",
@@ -263,6 +266,7 @@ export const timeline = [
       "ACHP, an adversarial claim-verification council (April).",
       "ZenStep and VitoSynth, vision-driven intervention and simulation prototypes (May, June).",
       "AWS Cloud and Linux intern at GRRAS Solutions, Jaipur, graduated with distinction (May to July).",
+      "Top 1% in the Amazon ML Challenge; semi-finalist in Flipkart GRiD 8.0.",
       "StyleLab, grounded wardrobe AI with 709 backend tests (September).",
       "CROWN-X, built solo for AWS First Commit 2026 (September).",
     ],
