@@ -5,6 +5,7 @@ import { SkipLinks } from "@/components/navigation/SkipLinks";
 import { Footer } from "@/components/contact/Footer";
 import { Tracker } from "@/components/accessibility/Tracker";
 import { WorldWatcher } from "@/components/motion/WorldWatcher";
+import { IntroPlate } from "@/components/motion/IntroPlate";
 import { bootScript } from "@/lib/motion";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -98,6 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <IntroPlate />
         <SkipLinks />
         <div className="field-grid" aria-hidden="true" />
         <SiteNav />
