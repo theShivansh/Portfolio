@@ -54,14 +54,14 @@ export function CaseLinks({ project: p, openLink = true }: { project: Project; o
       ) : null}
       {p.liveDemo ? (
         <li>
-          <a href={p.liveDemo} className="btn" target="_blank" rel="noopener" data-track="live_demo" data-project={p.slug}>
+          <a href={p.liveDemo} className="btn" target="_blank" rel="noopener" data-track="live_demo_click" data-project={p.slug}>
             Live demo <span aria-hidden="true">↗</span>
             <span className="visually-hidden"> (opens in a new tab)</span>
           </a>
         </li>
       ) : null}
       <li>
-        <a href={p.repository} className="btn" target="_blank" rel="noopener" data-track="github" data-project={p.slug}>
+        <a href={p.repository} className="btn" target="_blank" rel="noopener" data-track="github_click" data-project={p.slug}>
           Repository <span aria-hidden="true">↗</span>
           <span className="visually-hidden"> (opens in a new tab)</span>
         </a>

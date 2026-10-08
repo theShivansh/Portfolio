@@ -6,7 +6,7 @@ export function NoteToSystem() {
   return (
     <ScrollStory
       id="note-to-system"
-      label="Zone 04 · From note to system"
+      label="Zone 02 · From note to system"
       visual={<NoteToSystemVisual />}
       steps={[
         {

@@ -11,16 +11,18 @@ import { WorldGate } from "@/components/motion/WorldGate";
 import { Hero } from "@/components/hero/Hero";
 import { SystemMap } from "@/components/map/SystemMap";
 import { NotesSection } from "@/components/notes/NotesSection";
-import { WorkSection } from "@/components/projects/WorkSection";
+import { MoreSystems } from "@/components/projects/MoreSystems";
+import { Flagships } from "@/components/showcase/Flagships";
 import { SystemsStory } from "@/components/systems/SystemsStory";
 
 /** Revalidate the build log's GitHub facts once a day. */
 export const revalidate = 86400;
 
 /**
- * The order is the argument: what the systems are, what they are not
- * allowed to decide, how that is built and checked, where it broke anyway,
- * what that taught me, and who was watching.
+ * The order is the argument: the proof first (three systems, running),
+ * then the map of everything else, what the systems are not allowed to
+ * decide, how that is built and checked, where it broke anyway, what that
+ * taught me, and who was watching.
  */
 export default function Home() {
   return (
@@ -31,9 +33,10 @@ export default function Home() {
     >
       <main id="main" tabIndex={-1}>
         <Hero />
+        <Flagships />
         <SystemMap />
+        <MoreSystems />
         <SystemsStory />
-        <WorkSection />
         <Boundaries />
         <ArchitectureSection />
         <EvidenceSection />

@@ -4,11 +4,11 @@ import styles from "./contact.module.css";
 
 export function Footer() {
   const links = [
-    { label: "GitHub", href: site.github, track: "github" },
+    { label: "GitHub", href: site.github, track: "github_click" },
     { label: "Hugging Face", href: site.huggingface },
     site.linkedin ? { label: "LinkedIn", href: site.linkedin } : null,
-    { label: "Email", href: `mailto:${site.email}`, track: "contact" },
-    site.resume ? { label: "Resume", href: site.resume, track: "resume" } : null,
+    { label: "Email", href: `mailto:${site.email}`, track: "contact_click" },
+    site.resume ? { label: "Resume", href: site.resume, track: "resume_click" } : null,
   ].filter((l): l is { label: string; href: string; track?: string } => l !== null);
 
   return (

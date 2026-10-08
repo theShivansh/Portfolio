@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { flagships, videoFiles } from "@/lib/showcase";
 import { site } from "@/lib/site";
 import { FieldModeSwitch } from "./FieldModeSwitch";
 import { HeroSketch } from "./HeroSketch";
@@ -38,7 +40,7 @@ export function Hero() {
         <div className={styles.copy}>
           <h1 id="hero-title" className={styles.title}>
             <span className={styles.eyebrow}>
-              {site.name} <span aria-hidden="true">/</span> 2026
+              {site.name} <span aria-hidden="true">/</span> AI Engineer &amp; Systems Builder
             </span>
             <span className={styles.claim}>
               <span>I build systems</span>
@@ -47,23 +49,33 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className={styles.role}>AI engineering · System design · Evaluation</p>
+          <p className={styles.role}>AI engineering · System design · Evaluation · Full-stack AI</p>
 
           <p className={styles.why}>
             A model is one component. The retrieval, the validation, the simulation and the interface decide whether its
             output is worth anything — and I ship all of it.
           </p>
 
-          <Pipeline />
-
           <div className={styles.actions}>
-            <Link href="/#map" className="btn btn-solid">
-              Enter the system
+            <Link href="/#work" className={`btn btn-solid ${styles.demos}`}>
+              <span className={styles.demoThumbs} aria-hidden="true">
+                {flagships.map((f) => (
+                  <Image key={f.project.slug} src={videoFiles(f.showcase.video.base).thumb} alt="" width={18} height={32} />
+                ))}
+              </span>
+              Watch the demos
+              <span className={styles.demoNote}>3 × 25s</span>
             </Link>
-            <a href={site.github} className="btn" data-track="github" rel="noopener" target="_blank">
-              GitHub
+            <Link href="/#map" className="btn">
+              Explore systems
+            </Link>
+            <a href={site.github} className="btn" data-track="github_click" rel="noopener" target="_blank">
+              GitHub <span aria-hidden="true">↗</span>
             </a>
           </div>
+
+          <Pipeline />
+
 
           <dl className={styles.stats} aria-label="The short version">
             {stats.map((s) => (
@@ -79,7 +91,7 @@ export function Hero() {
           <HeroSketch />
         </div>
 
-        <a href="#map" className={styles.scrollCue}>
+        <a href="#work" className={styles.scrollCue}>
           Scroll to inspect <span aria-hidden="true">↓</span>
         </a>
       </div>

@@ -47,12 +47,15 @@ export function WorldWatcher() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    // A section can change world in place (the flagship deck does).
+    window.addEventListener("fi:world", onScroll);
     const raf = requestAnimationFrame(apply);
 
     return () => {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("fi:world", onScroll);
       cancelAnimationFrame(raf);
       delete root.dataset.surface;
       delete root.dataset.surfaceDark;

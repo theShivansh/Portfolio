@@ -25,7 +25,7 @@ export const interactions: Record<string, Interaction> = {
     node: (scope) => (
       <ScrollStory
         id={`${scope}-crownx-story`}
-        label="Zone 02 · Evidence timeline"
+        label="Case zone · Evidence timeline"
         visual={<EvidenceBoard />}
         steps={[
           { title: "Retrieve", body: "Hybrid BM25 + k-NN search returns passages from three documents written on different dates." },
@@ -43,7 +43,7 @@ export const interactions: Record<string, Interaction> = {
     node: (scope) => (
       <ScrollStory
         id={`${scope}-achp-story`}
-        label="Zone 03 · Parallel branches"
+        label="Case zone · Parallel branches"
         visual={<AchpPipeline />}
         steps={[
           { title: "A claim enters", body: "A rule-based security pass screens for injection, jailbreaks and PII before any model runs." },

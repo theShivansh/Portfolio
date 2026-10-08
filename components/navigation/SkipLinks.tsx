@@ -8,7 +8,7 @@ export function SkipLinks() {
       <a href="#main">Skip to content</a>
       <Link href="/#after-work">Skip case studies</Link>
       {site.resume ? (
-        <a href={site.resume} download data-track="resume">
+        <a href={site.resume} download data-track="resume_click">
           Download resume
         </a>
       ) : null}

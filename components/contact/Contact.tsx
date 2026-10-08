@@ -62,17 +62,17 @@ export function Contact() {
           </p>
 
           <div className={styles.actions}>
-            <a href={`mailto:${site.email}?subject=Let%27s%20build%20something`} className="btn btn-solid" data-track="contact">
+            <a href={`mailto:${site.email}?subject=Let%27s%20build%20something`} className="btn btn-solid" data-track="contact_click">
               Build something
             </a>
-            <a href={site.github} className="btn" target="_blank" rel="noopener" data-track="github">
+            <a href={site.github} className="btn" target="_blank" rel="noopener" data-track="github_click">
               GitHub ↗
             </a>
             <a href={site.youtube} className="btn" target="_blank" rel="noopener" data-track="youtube">
               TECHOLaugh ↗
             </a>
             {site.resume ? (
-              <a href={site.resume} className="btn" download data-track="resume">
+              <a href={site.resume} className="btn" download data-track="resume_click">
                 Resume
               </a>
             ) : null}
@@ -80,7 +80,7 @@ export function Contact() {
 
           <p className={styles.email}>
             Or write directly:{" "}
-            <a href={`mailto:${site.email}`} className="link" data-track="contact">
+            <a href={`mailto:${site.email}`} className="link" data-track="contact_click">
               {site.email}
             </a>
           </p>

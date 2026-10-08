@@ -161,7 +161,42 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-3);
-  margin-top: var(--s-6);
+  margin-top: var(--s-5);
+}
+
+/* The proof, one click away: the three demos' own first frames. */
+.demos {
+  padding-left: 0.55rem;
+}
+
+.demoThumbs {
+  display: inline-flex;
+  margin-right: 0.15rem;
+}
+
+.demoThumbs img {
+  width: 1.05rem;
+  height: auto;
+  border: 1px solid var(--paper);
+  border-radius: 2px;
+  transition: transform var(--dur-small) var(--ease-out);
+}
+
+.demoThumbs img + img {
+  margin-left: -0.35rem;
+}
+
+.demos:hover .demoThumbs img:nth-child(1) {
+  transform: translateX(-2px) rotate(-4deg);
+}
+
+.demos:hover .demoThumbs img:nth-child(3) {
+  transform: translateX(2px) rotate(4deg);
+}
+
+.demoNote {
+  font-size: 0.6875rem;
+  opacity: 0.7;
 }
 
 .figure {

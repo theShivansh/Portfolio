@@ -26,7 +26,7 @@ export function SystemMap() {
   return (
     <section id="map" data-chapter="map" className="section" aria-labelledby="map-title">
       <div className="page sheet">
-        <SectionMarker n="01" label="The map" note="the lines are the shared engineering" />
+        <SectionMarker n="02" label="The map" note="the lines are the shared engineering" />
         <div className="body">
           <h2 id="map-title" className="h-section">
             Seven systems, and what runs between them

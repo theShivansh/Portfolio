@@ -6,7 +6,15 @@
  * page; otherwise emits a DOM event and does nothing else.
  */
 
-export type TrackEvent = "project_open" | "live_demo" | "github" | "resume" | "contact" | "youtube";
+export type TrackEvent =
+  | "project_open"
+  | "project_video_play"
+  | "project_video_open"
+  | "live_demo_click"
+  | "github_click"
+  | "resume_click"
+  | "contact_click"
+  | "youtube";
 
 type Props = { project?: string };
 
@@ -17,7 +25,16 @@ declare global {
   }
 }
 
-const allowed = new Set<TrackEvent>(["project_open", "live_demo", "github", "resume", "contact", "youtube"]);
+const allowed = new Set<TrackEvent>([
+  "project_open",
+  "project_video_play",
+  "project_video_open",
+  "live_demo_click",
+  "github_click",
+  "resume_click",
+  "contact_click",
+  "youtube",
+]);
 
 export function isTrackEvent(v: string | undefined): v is TrackEvent {
   return !!v && allowed.has(v as TrackEvent);

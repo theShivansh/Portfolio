@@ -16,7 +16,7 @@ export async function BuildLog() {
             <h2 id="build-log-title" className="h-section">
               Open source / build log
             </h2>
-            <a href={site.github} className="btn" target="_blank" rel="noopener" data-track="github">
+            <a href={site.github} className="btn" target="_blank" rel="noopener" data-track="github_click">
               github.com/theShivansh ↗
             </a>
           </div>
@@ -54,7 +54,7 @@ export async function BuildLog() {
                       </span>
                     </td>
                     <td className={styles.link}>
-                      <a href={r.url} target="_blank" rel="noopener" data-track="github" data-project={r.slug} aria-label={`${r.name} on GitHub (opens in a new tab)`}>
+                      <a href={r.url} target="_blank" rel="noopener" data-track="github_click" data-project={r.slug} aria-label={`${r.name} on GitHub (opens in a new tab)`}>
                         GitHub ↗
                       </a>
                     </td>

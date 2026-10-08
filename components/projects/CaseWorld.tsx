@@ -11,11 +11,11 @@ import styles from "./world.module.css";
  * without any component knowing it has. The case's anchor stays on the
  * <article> inside, so /#crown-x still lands where it always did.
  */
-export function CaseWorld({ project }: { project: Project }) {
+export function CaseWorld({ project, chapter = "work" }: { project: Project; chapter?: string }) {
   const world = worldFor(project.slug);
   return (
     <section
-      data-chapter="work"
+      data-chapter={chapter}
       data-world={world.id}
       data-world-dark={world.dark ? "" : undefined}
       className={`section ${styles.world}`}

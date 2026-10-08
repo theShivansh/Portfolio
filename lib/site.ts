@@ -14,7 +14,7 @@ export const site = {
   role: "AI Engineer & Systems Builder",
   title: "Shivansh Shukla — AI Engineer & Systems Builder",
   description:
-    "AI engineer building evidence-grounded, multi-agent, simulation, and human-in-the-loop systems.",
+    "AI engineer who builds systems that don't trust the model: evidence-first RAG, adversarial multi-agent verification and grounded AI, with evals and live demos.",
   url: resolveSiteUrl(),
   email: "shivanshshuklajaipur@gmail.com",
   github: "https://github.com/theShivansh",
@@ -42,13 +42,14 @@ export type Chapter = {
 
 /**
  * The chapters, in page order. Section ids must match.
- * The order is an argument: what the systems are, then what they are not
- * allowed to do, then how that is checked, then where it failed anyway.
+ * The order is an argument: three systems running, then what the rest are,
+ * then what they are not allowed to do, how that is checked, and where it
+ * failed anyway.
  */
 export const chapters: Chapter[] = [
-  { id: "map", n: "01", label: "Map", long: "The map" },
-  { id: "systems", n: "02", label: "Kinds", long: "Three kinds of system" },
-  { id: "work", n: "03", label: "Work", long: "Selected work" },
+  { id: "work", n: "01", label: "Flagship", long: "Flagship systems" },
+  { id: "map", n: "02", label: "Map", long: "The map" },
+  { id: "systems", n: "03", label: "Kinds", long: "Three kinds of system" },
   { id: "boundaries", n: "04", label: "Trust", long: "What I don't trust" },
   { id: "architecture", n: "05", label: "Method", long: "How I build it" },
   { id: "evidence", n: "06", label: "Proof", long: "How I test it" },

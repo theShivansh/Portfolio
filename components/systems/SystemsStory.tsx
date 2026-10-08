@@ -16,7 +16,7 @@ export function SystemsStory({ as: H = "h2" }: { as?: "h1" | "h2" }) {
   return (
     <section id="systems" data-chapter="systems" className="section" aria-labelledby="systems-title">
       <div className="page sheet">
-        <SectionMarker n="02" label="Systems" note="watch where the checks sit" />
+        <SectionMarker n="03" label="Systems" note="watch where the checks sit" />
         <div className="body">
           <H id="systems-title" className="h-section">
             What I actually build
@@ -32,7 +32,7 @@ export function SystemsStory({ as: H = "h2" }: { as?: "h1" | "h2" }) {
             pace="slow"
             className={styles.story}
             skipLabel="Skip to work"
-            skipTo="#work"
+            skipTo="#boundaries"
             visual={
               <div className={styles.benches}>
                 {systemKinds.map((kind, i) => (
